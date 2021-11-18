@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class StepDefinitions {
+public class StepDefs {
 
     private Example example;
 
