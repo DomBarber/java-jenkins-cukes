@@ -46,6 +46,4 @@ Search for both `Bitbucket Server Integration`, and `Bitbucket`, ticking the box
 
 Once this has finished, you can go to `Jenkins Dashboard > Manage Jenkins > Configure System` where some new fields applicable to BitBucket are available.
 
-Find `Bitbucket Server integration` and add an instance. Give it a name & set the Instance URL (should be http://localhost:7990/)
-
 Check out the guide at https://plugins.jenkins.io/atlassian-bitbucket-server-integration/
