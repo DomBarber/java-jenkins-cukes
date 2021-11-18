@@ -1,0 +1,42 @@
+version: "3.1"
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk11
+    container_name: jenkins
+    restart: always
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+
+  bitbucket:
+    image: atlassian/bitbucket-server
+    container_name: bitbucket
+    restart: always
+    ports:
+     - "7990:7990"
+     - "7999:7999"
+    environment:
+      - BITBUCKET_HOME=/var/atlassian/application-data/bitbucket/
+    volumes:
+      - bitbucketData:/var/atlassian/application-data/bitbucket
+
+  bitbucket-postgres:
+    image: postgres:9.6.15
+    container_name: bitbucket-db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - bitbucketDbVolume:/var/lib/postgresql/data
+
+volumes:
+  bitbucketData:
+    name: bitbucketData
+  bitbucketDbVolume:
+    name: bitbucketDbVolume
