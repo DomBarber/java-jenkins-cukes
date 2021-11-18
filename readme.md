@@ -21,4 +21,7 @@ URL: localhost:7990
 
 `select language > internal (demo use) > complete licensing section (can use trial) > setup credentials`
 
-Once this is complete, login with these creds & setup a project and repository. Then, configure your git remote to point to the repo (url should begin with 'http://localhost:7990/'). 
+Once this is complete, login with these creds & setup a project and repository. Then, configure your git remote to point to the repo (url should begin with 'http://localhost:7990/').
+
+Such as:
+`git remote set-url origin http://localhost:7990/scm/san/java-cukes-jenkins.git`
