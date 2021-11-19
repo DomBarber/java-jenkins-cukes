@@ -1,10 +1,10 @@
-##Configuration:
+## Configuration:
 
 Run `docker compose up` / `docker-compose up`
 
 Each service will need some initial configuration:
 
-###BitBucket:
+### BitBucket:
 
 URL: localhost:7990
 
@@ -19,7 +19,7 @@ Add your SSH key to bitbucket (handy for later), easily copied via `pbcopy < ~/.
 
 Bitbucket should now up and running on the localhost.
 
-###Jenkins:
+### Jenkins:
 
 URL: localhost:8080
 
@@ -36,7 +36,7 @@ Now configure an admin user, then the Jenkins URL (default is http://localhost:8
 
 Jenkins is now ready to use, however to integrate with BitBucket there's some additional setup to do.
 
-####Jenkins - integrating with BitBucket
+#### Jenkins - integrating with BitBucket
 
 In order to integrate with BitBucket some extra plugins will be needed, these are easily installed from the Jenkins Plugin Manager:
 
