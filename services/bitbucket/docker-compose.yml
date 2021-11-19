@@ -8,6 +8,10 @@ services:
     ports:
       - "8080:8080"
       - "50000:50000"
+    environment:
+      - JENKINS_HOME=/var/jenkins_home
+    volumes:
+      - jenkinsVolume:/var/jenkins_home
 
   bitbucket:
     image: atlassian/bitbucket-server
@@ -40,3 +44,5 @@ volumes:
     name: bitbucketData
   bitbucketDbVolume:
     name: bitbucketDbVolume
+  jenkinsVolume:
+    name: jenkinsVolume
