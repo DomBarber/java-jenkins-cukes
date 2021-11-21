@@ -75,4 +75,3 @@ Such as:
 Add your SSH key to bitbucket (handy for later), easily copied via `pbcopy < ~/.ssh/id_rsa.pub`. Generate a fresh key/pair before doing this if desired.
 
 Bitbucket should now be up and running on the localhost.
-
