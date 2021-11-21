@@ -1,4 +1,4 @@
-#!/usr/bin/env groovy
+#!groovy
 
 pipeline {
     agent { docker { image 'maven:3.3.3' } }
