@@ -41,7 +41,7 @@ this will generate a URL GitHub can use to access the local Jenkins instance.
 
 First, a Personal Access Token needs to be created within GitHub: `Settings > Developer settings > personal access tokens`
 
-Generate a new token, giving it suitable scope & expiration length. `(repo, workflow)`. Once this is done copy & save the token.
+Generate a new token, giving it suitable scope & expiration length, such as 'repo' + 'workflow'. Once this is done copy & save the token.
 
 Now go to Jenkins:
 `Jenkins Dashboard > (Select an item/job) > Configure > Source Code Management`
