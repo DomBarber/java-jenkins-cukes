@@ -47,7 +47,14 @@ Now go to Jenkins:
 `Jenkins Dashboard > (Select an item/job) > Configure > Source Code Management`
 
 Select 'Git', then add the URL to the GitHub repository along with the token, e.g. `https://${token}@github.com/organisation/repo`. 
-Credentials will not be needed.
+Credentials will not be needed here.
+
+Now, head to `Jenkins Dashboard > Manage Jenkins > Manage Credentials` and add a new global credentials of type `Secret Text`.
+Enter the Personal Access Token into 'Secret', give it an ID (optional) and provide a description.
+
+This will be used at `Jenkins Dashboard > Manage Jenkins > Configure System > GitHub`
+Select 'add GitHub Server' and give this a 'Name', leave 'API URL' as default unless using GitHub Enterprise, finally select the credentials from earlier & check 'Manage hooks'.
+
 
 ### Jenkins / Bitbucket Integration
 
