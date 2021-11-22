@@ -49,10 +49,13 @@ this will generate a URL GitHub can use to access the local Jenkins instance.
 #### 1. Creating a Webhook:
 
 `Settings > Webhooks > Add Webhook`
-- Payload URL = `${JENKINS_BASE_URL}/github-webhook/`
-- Content type = `application/json`
-- Secret = `leave this empty`
-- Events = `'Let me select individual events' > Pushes, Pull Requests`
+
+```
+- Payload URL = ${JENKINS_BASE_URL}/github-webhook/
+- Content type = application/json
+- Secret = leave this empty
+- Events = 'Let me select individual events' > Pushes, Pull Requests
+```
 
 #### 2. Adding Source Code Management to pipeline
 
