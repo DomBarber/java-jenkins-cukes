@@ -1,3 +1,18 @@
+## Overview
+
+POC for Java11 + Cucumber tests, source controlled within GitHub / Bitbucket & running in Jenkins CI.
+
+
+- Dockerfile for Jenkins, run with docker-compose
+
+- GitHub integration & WebHooks (Push, Pull Request)
+
+- Multi-Branch Jenkins Pipeline (PR & Branch discovery)
+
+- Using a Jenkinsfile (declarative syntax). Various post-execution behaviour (always, success, failure, unstable, changed)
+
+- Jenkins container also running Docker (Docker-in-Docker!) for example to pull maven image at the start of the build. This was a bit of a permissions headache initially, however worth it as pretty cool to have docker functionality available within a docker-hosted Jenkins.
+
 ## Configuration:
 
 Run `docker compose up` / `docker-compose up`
@@ -16,6 +31,8 @@ You will be required to enter the admin password found within the logs, for exam
       jenkins       | 3b78d15973064d58b93eb42abd5caf5c
 
 Proceed & setup the Jenkins plugins for your requirements. 'Install suggested plugins' is the recommended quickstart option.
+Some other useful plugins are `Docker` and `Docker Pipeline` which can be manually installed afterwards, via `Manage Jenkins > Manage Plugins`
+(If using Docker don't forget to set this up within Jenkins, under `Global Tool Configuration`)
   
 Now configure an admin user, then the Jenkins URL (default is http://localhost:8080/). Save and Finish.
 
@@ -32,22 +49,32 @@ this will generate a URL GitHub can use to access the local Jenkins instance.
 #### 1. Creating a Webhook:
 
 `Settings > Webhooks > Add Webhook`
-- Payload URL = `${JENKINS_BASE_URL}/github-webhook/`
-- Content type = `application/json`
-- Secret = `leave this empty`
-- Events = `'Let me select individual events' > Pushes, Pull Requests`
+
+```
+- Payload URL = ${JENKINS_BASE_URL}/github-webhook/
+- Content type = application/json
+- Secret = leave this empty
+- Events = 'Let me select individual events' > Pushes, Pull Requests
+```
 
 #### 2. Adding Source Code Management to pipeline
 
 First, a Personal Access Token needs to be created within GitHub: `Settings > Developer settings > personal access tokens`
 
-Generate a new token, giving it suitable scope & expiration length. `(repo, workflow)`. Once this is done copy & save the token.
+Generate a new token, giving it suitable scope & expiration length, such as 'repo' + 'workflow'. Once this is done copy & save the token.
 
 Now go to Jenkins:
 `Jenkins Dashboard > (Select an item/job) > Configure > Source Code Management`
 
 Select 'Git', then add the URL to the GitHub repository along with the token, e.g. `https://${token}@github.com/organisation/repo`. 
-Credentials will not be needed.
+Credentials will not be needed here.
+
+Now, head to `Jenkins Dashboard > Manage Jenkins > Manage Credentials` and add a new global credentials of type `Secret Text`.
+Enter the Personal Access Token into 'Secret', give it an ID (optional) and provide a description.
+
+This will be used at `Jenkins Dashboard > Manage Jenkins > Configure System > GitHub`
+Select 'add GitHub Server' and give this a 'Name', leave 'API URL' as default unless using GitHub Enterprise, finally select the credentials from earlier & check 'Manage hooks'.
+
 
 ### Jenkins / Bitbucket Integration
 
@@ -75,3 +102,8 @@ Such as:
 Add your SSH key to bitbucket (handy for later), easily copied via `pbcopy < ~/.ssh/id_rsa.pub`. Generate a fresh key/pair before doing this if desired.
 
 Bitbucket should now be up and running on the localhost.
+
+### Known Issues
+
+- Running Docker-in-Docker. This will likely result in various permission issues & an inability to access the host installation from the Jenkins container (docker will be `: not found` as a first symptom).
+Workarounds are possible (and already in place here for Mac OS), so mostly a heads up that some troubleshooting may be required.

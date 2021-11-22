@@ -1,32 +1,33 @@
-#!/usr/bin/env groovy
+#!groovy
 
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+    agent { docker { image 'maven:3.8.3-jdk-11' } }
     stages {
-       stage('setup') {
-           // setup / prerequisites
-       }
+        stage('setup') {
+            steps {
+                echo 'setup / prerequisites steps'
+            }
+        }
         stage('build') {
             steps {
                 sh 'mvn --version'
                 sh 'mvn clean install -DskipTests'
                 sh '''
-                   echo "Multiline shell steps work too"
-                   ls -lah
+                    echo "Multiline shell steps work too"
+                    ls -lah
                 '''
 
             }
         }
         stage('test') {
-            try {
+            steps {
                 sh 'mvn test'
             }
-            catch (err) {
-               echo err
-            }
-       }
+        }
         stage('end') {
-            echo "Success"
+            steps {
+                echo  'Success'
+            }
         }
     }
     post {
