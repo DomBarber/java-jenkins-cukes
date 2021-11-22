@@ -1,3 +1,18 @@
+## Overview
+
+POC for Java11 + Cucumber tests, source controlled within GitHub / Bitbucket & running in Jenkins CI.
+
+
+- Dockerfile for Jenkins, run with docker-compose
+
+- GitHub integration & WebHooks (Push, Pull Request)
+
+- Multi-Branch Jenkins Pipeline (PR & Branch discovery)
+
+- Using a Jenkinsfile (declarative syntax). Various post-execution behaviour (always, success, failure, unstable, changed)
+
+- Jenkins container also running Docker (Docker-in-Docker!) for example to pull maven image at the start of the build. This was a bit of a permissions headache initially, however worth it as pretty cool to have docker functionality available within a docker-hosted Jenkins.
+
 ## Configuration:
 
 Run `docker compose up` / `docker-compose up`
