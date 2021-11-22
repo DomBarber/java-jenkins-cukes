@@ -36,6 +36,9 @@ pipeline {
         }
         success {
             echo 'This will run only if successful'
+            if (env.BRANCH_NAME == 'master') {
+                build '../amazing-performance-tests/main'
+            }
         }
         failure {
             echo 'This will run only if failed'
