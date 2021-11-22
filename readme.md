@@ -1,4 +1,4 @@
-## Overview
+# Overview
 
 POC for Java11 + Cucumber tests, source controlled within GitHub / Bitbucket & running in Jenkins CI.
 
@@ -13,13 +13,20 @@ POC for Java11 + Cucumber tests, source controlled within GitHub / Bitbucket & r
 
 - Jenkins container also running Docker (Docker-in-Docker!) for example to pull maven image at the start of the build. This was a bit of a permissions headache initially, however worth it as pretty cool to have docker functionality available within a docker-hosted Jenkins.
 
-## Configuration:
+
+# Quickstart
+
+Run `make jenkins-github` or `make jenkins-bitbucket` depending on your preferred VCS. (note that GitHub will require an existing account, whereas Bitbucket will be completely locally hosted including a postgres db)
+
+
+# Configuration:
 
 Run `docker compose up` / `docker-compose up`
 
 Each service will need some initial configuration:
 
-### Jenkins Setup (Local Server):
+
+## Jenkins Setup (Local Server):
 
 URL: localhost:8080
 
@@ -38,7 +45,8 @@ Now configure an admin user, then the Jenkins URL (default is http://localhost:8
 
 Jenkins is now ready to use, however to integrate with Bitbucket there's some additional setup to do.
 
-### Jenkins / GitHub Integration
+
+## Jenkins / GitHub Integration
 
 Everything needed to integrate with GitHub should come out of the box, however if hosting Jenkins locally then the URL will need to be visible to GitHub. 
 `ngrok` https://ngrok.com/ can be used for this purpose, helping to quickly expose the URL and tunnel traffic.
@@ -46,7 +54,7 @@ Everything needed to integrate with GitHub should come out of the box, however i
 After extracting the ngrok package, add it to your path or `cd` into the directory containing the executable & run `./ngrok http 8080` -
 this will generate a URL GitHub can use to access the local Jenkins instance.
 
-#### 1. Creating a Webhook:
+### 1. Creating a Webhook:
 
 `Settings > Webhooks > Add Webhook`
 
@@ -57,7 +65,7 @@ this will generate a URL GitHub can use to access the local Jenkins instance.
 - Events = 'Let me select individual events' > Pushes, Pull Requests
 ```
 
-#### 2. Adding Source Code Management to pipeline
+### 2. Adding Source Code Management to pipeline
 
 First, a Personal Access Token needs to be created within GitHub: `Settings > Developer settings > personal access tokens`
 
@@ -76,7 +84,7 @@ This will be used at `Jenkins Dashboard > Manage Jenkins > Configure System > Gi
 Select 'add GitHub Server' and give this a 'Name', leave 'API URL' as default unless using GitHub Enterprise, finally select the credentials from earlier & check 'Manage hooks'.
 
 
-### Jenkins / Bitbucket Integration
+## Jenkins / Bitbucket Integration
 
 In order to integrate with Bitbucket some extra plugins will be needed, these are easily installed from the Jenkins Plugin Manager:
 
@@ -88,7 +96,8 @@ Once this has finished, you can go to `Jenkins Dashboard > Manage Jenkins > Conf
 
 Check out the guide at https://plugins.jenkins.io/atlassian-bitbucket-server-integration/
 
-### Bitbucket Setup (Local Server):
+
+## Bitbucket Setup (Local Server):
 
 URL: localhost:7990
 
@@ -103,7 +112,11 @@ Add your SSH key to bitbucket (handy for later), easily copied via `pbcopy < ~/.
 
 Bitbucket should now be up and running on the localhost.
 
-### Known Issues
+<br />
 
-- Running Docker-in-Docker. This will likely result in various permission issues & an inability to access the host installation from the Jenkins container (docker will be `: not found` as a first symptom).
+---
+
+# Known Issues
+
+Running Docker-in-Docker. This will likely result in various permission issues & an inability to access the host installation from the Jenkins container (docker will be `: not found` as a first symptom).
 Workarounds are possible (and already in place here for Mac OS), so mostly a heads up that some troubleshooting may be required.
