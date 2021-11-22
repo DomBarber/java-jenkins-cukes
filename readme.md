@@ -45,7 +45,7 @@ Some other useful plugins are `Docker` and `Docker Pipeline` which can be manual
   
 Now configure an admin user, then the Jenkins URL (default is http://localhost:8080/). Save and Finish.
 
-Jenkins is now ready to use, however to integrate with Bitbucket there's some additional setup to do.
+Jenkins is now ready to use, however to integrate with GitHub / Bitbucket there's still some additional setup to do (see below).
 
 
 ## Jenkins / GitHub Integration
