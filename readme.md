@@ -11,8 +11,6 @@ POC for Java11 + Cucumber tests, source controlled within GitHub / Bitbucket & r
 
 - Uses a Jenkinsfile (declarative syntax). Various post-execution behaviours possible (always, success, failure, unstable, changed).
 
-- Based on the above, successfull build of this project triggers another Jenkins job.
-
 - The Jenkins container is also running Docker (Docker-in-Docker!) for example to pull maven image at the start of the build. This was a bit of a permissions headache initially, however worth it as pretty cool to have docker functionality available within a docker-hosted Jenkins.
 
 
