@@ -32,30 +32,20 @@ pipeline {
     }
     post {
         always {
-            steps {
-                sh  'echo "This will always run"'
-            }
+            sh  'echo "This will always run"'
         }
         success {
-            steps {
-                sh 'echo "This will run only if successful"'
-            }
+            sh 'echo "This will run only if successful"'
         }
         failure {
-            steps {
-                sh 'echo "This will run only if failed"'
-            }
+            sh 'echo "This will run only if failed"'
         }
         unstable {
-            steps {
-                sh 'echo "This will run only if the run was marked as unstable"'
-            }
+            sh 'echo "This will run only if the run was marked as unstable"'
         }
         changed {
-            steps {
-                sh 'echo "This will run only if the state of the Pipeline has changed"'
-                sh 'echo "For example, if the Pipeline was previously failing but is now successful"'
-            }
+            sh 'echo "This will run only if the state of the Pipeline has changed"'
+            sh 'echo "For example, if the Pipeline was previously failing but is now successful"'
         }
     }
 }
