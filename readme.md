@@ -5,7 +5,7 @@ POC for Java11 + Cucumber tests, source controlled within GitHub / Bitbucket & r
 
 - Dockerfile for Jenkins, run with docker-compose
 
-- GitHub integration & Webhooks (Push, Pull Request)
+- GitHub integration & Webhooks (Push, Pull Request). Forced checking of CI job status & prevents merge if failed.
 
 - Multi-Branch Jenkins Pipeline (PR & Branch discovery)
 
