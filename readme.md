@@ -16,7 +16,9 @@ POC for Java11 + Cucumber tests, source controlled within GitHub / Bitbucket & r
 
 # Quickstart
 
-Run `make jenkins-github` or `make jenkins-bitbucket` depending on your preferred VCS. (note that GitHub will require an existing account, whereas Bitbucket will be completely locally hosted including a postgres db)
+Run `make jenkins-github` or `make jenkins-bitbucket` depending on your preferred VCS.
+
+Note: GitHub will require an existing account, whereas Bitbucket will be completely locally hosted (including a postres db)
 
 
 # Configuration:
