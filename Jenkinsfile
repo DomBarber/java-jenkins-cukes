@@ -1,7 +1,7 @@
 #!groovy
 
 pipeline {
-    agent { docker { image 'maven:3.8.4' } }
+    agent { docker { image 'maven:3.8.3-jdk-11' } }
     stages {
         stage('setup') {
             steps {
