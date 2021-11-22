@@ -17,6 +17,7 @@ You will be required to enter the admin password found within the logs, for exam
 
 Proceed & setup the Jenkins plugins for your requirements. 'Install suggested plugins' is the recommended quickstart option.
 Some other useful plugins are `Docker` and `Docker Pipeline` which can be manually installed afterwards, via `Manage Jenkins > Manage Plugins`
+(If using Docker don't forget to set this up within Jenkins, under `Global Tool Configuration`)
   
 Now configure an admin user, then the Jenkins URL (default is http://localhost:8080/). Save and Finish.
 
