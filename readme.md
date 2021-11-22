@@ -84,3 +84,8 @@ Such as:
 Add your SSH key to bitbucket (handy for later), easily copied via `pbcopy < ~/.ssh/id_rsa.pub`. Generate a fresh key/pair before doing this if desired.
 
 Bitbucket should now be up and running on the localhost.
+
+### Known Issues
+
+- Running Docker-in-Docker. This will likely result in various permission issues & an inability to access the host installation from the Jenkins container (docker will be `: not found` as a first symptom).
+Workarounds are possible (and already in place here for Mac OS), so mostly a heads up that some troubleshooting may be required.

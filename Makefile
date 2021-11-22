@@ -1,5 +1,5 @@
 jenkins-bitbucket:
-	docker-compose -f ./services/jenkins/bitbucket/docker-compose.yml up -d
+	docker-compose -f ./services/bitbucket/docker-compose.yml up --build
 
 jenkins-github:
-	docker-compose -f ./services/jenkins/github/docker-compose.yml up -d
+	docker-compose -f ./services/github/docker-compose.yml up --build

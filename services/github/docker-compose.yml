@@ -2,6 +2,9 @@ version: "3.1"
 
 services:
   jenkins:
+    build:
+      context: ../jenkins
+      dockerfile: Dockerfile
     image: jenkins/jenkins:lts-jdk11
     container_name: jenkins
     restart: always
@@ -11,8 +14,9 @@ services:
     environment:
       - JENKINS_HOME=/var/jenkins_home
     volumes:
-      - jenkinsVolume:/var/jenkins_home
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
 
 volumes:
-  jenkinsVolume:
+  jenkins_home:
     name: jenkinsVolume
